@@ -1,0 +1,31 @@
+// init task (13 div 5, 13 mod 5)
+LDC 13
+STV number
+STV x
+// invert divider (5 -> -5)
+LDC -5
+STV divider
+LDC 0
+STV divResult
+
+// main loop
+:loop
+LDV x
+ADD divider
+STV x
+JMN end
+LDC 1
+ADD divResult
+STV divResult
+JMP loop
+
+// finished
+:end
+// calculate mod
+LDC -1
+ADD divider
+NOT
+ADD x
+STV modResult
+
+HALT

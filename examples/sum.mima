@@ -1,0 +1,34 @@
+// init memory
+LDC 5
+STV length
+LDC 0
+STV i
+STV sum
+
+// array
+LDC 11
+STV 0
+LDC 22
+STV 1
+LDC 33
+STV 2
+LDC 44
+STV 3
+LDC 55
+STV 4
+
+// main loop
+:next
+LDIV i
+ADD sum
+STV sum
+
+LDC 1
+ADD i
+STV i
+EQL length
+JMN done
+JMP next
+
+:done
+HALT
