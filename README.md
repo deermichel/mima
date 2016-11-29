@@ -34,7 +34,7 @@ Download java file, compile, execute via `java MiMa [filename]`.
 
 ### Examples
 
-[Click here](../tree/master/examples)
+[Click here](https://github.com/DeerMichel/mima/tree/master/examples)
 
 ### Known issues (TODO)
 
