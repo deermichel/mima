@@ -117,7 +117,7 @@ public class MiMa {
 
 			// RAR = rotate bits of accumulator right by one position
       else if (command.equals("RAR")) {
-        accu >>= 1;
+        accu = Integer.rotateRight(accu, 1);
   			System.out.println(" | accu: " + accu);
       }
 
