@@ -1,3 +1,7 @@
+
+// --- NOT WORKING ---
+HALT
+
 // init task (13 div 5, 13 mod 5)
 LDC 13
 STV number
