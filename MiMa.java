@@ -91,6 +91,10 @@ public class MiMa {
 					System.out.println("ERROR: illegal constant definition."
 							+ "\nExample of a proper definition:\n#DEF A=1337");
 					break;
+				} catch (IndexOutOfBoundsException e) {
+					System.out.println("ERROR: illegal constant definition."
+							+ "\nExample of a proper definition:\n#DEF A=1337");
+					break;
 				}
 				continue;
 			}
@@ -160,7 +164,7 @@ public class MiMa {
 						break;
 					}
 					try {
-						accu = memory.get(Integer.toString(val));
+						accu = memory.get(val);
 					} catch (NullPointerException e) {
 						System.out.println("------------------------------------");
 						System.out.println("ERROR: Illegal parameter '" + Integer.toString(val)
@@ -221,15 +225,19 @@ public class MiMa {
 				// JMN = jump to label if accumulator is negative
 				else if (command.equals("JMN")) {
 					if (accu < 0) {
+						boolean found = false;
 						for (i = 0; i < file.length; i++) {
 							if (file[i].equals(":" + parameterStr)) {
+								found = true;
 								break;
 							}
 						}
-						// no label found - terminate with error
-						System.out.println("------------------------------------");
-						System.out.println("ERROR: label '" + parameterStr + "' does not exist.");
-						break;
+						if (!found) {
+							// no label found - terminate with error
+							System.out.println("------------------------------------");
+							System.out.println("ERROR: label '" + parameterStr + "' does not exist.");
+							break;
+						}
 					} else {
 						System.out.println(" | ignore jump");
 					}
@@ -276,6 +284,8 @@ public class MiMa {
 		System.out.println("------------------------------------");
 		System.out.println(" accu: " + accu);
 		System.out.println("------------------------------------");
+		
+		// " problem": addresses in output are not printed in ascending order
 		for (int key : memory.keySet()) {
 			String keyStr = "" + key;
 			if (constants.containsValue(key)) {
