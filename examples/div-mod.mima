@@ -1,14 +1,23 @@
-
-// --- NOT WORKING ---
-HALT
+// address constant definitions
+#DEF divider=0
+#DEF number=1
+#DEF x=5
+#DEF divResult=10
+#DEF modResult=11
 
 // init task (13 div 5, 13 mod 5)
 LDC 13
 STV number
 STV x
+
 // invert divider (5 -> -5)
-LDC -5
+LDC 5
+NOT
 STV divider
+LDC 1
+ADD divider
+STV divider
+
 LDC 0
 STV divResult
 
@@ -26,7 +35,8 @@ JMP loop
 // finished
 :end
 // calculate mod
-LDC -1
+LDC 0
+NOT
 ADD divider
 NOT
 ADD x

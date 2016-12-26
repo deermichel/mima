@@ -1,6 +1,7 @@
-
-// --- NOT WORKING ---
-HALT
+// address constant definitions
+#DEF length=102
+#DEF sum=100
+#DEF i=101
 
 // init memory
 LDC 5
